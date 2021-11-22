@@ -1,33 +1,38 @@
-# bp-contract-generator-java
+= bp-contract-generator-java
+:tip-caption: :bulb:
 
-Here is an easy and programmatic way to generate block provider contracts. Contracts are valid by design and will fit
-perfectly with the BMS.
+We are aware that writing a block provider contract is clearly a pain in the ass.
+Therefore, to limit this frustration, and to let you focus on your business, we offer you a simple fluid API to help you.
 
-This fluid API helps you to declare multiple block types with theirs endpoint, parameters and associated templates.
+This is an easy and programmatic way to generate block provider contracts.
+Contracts are valid by design and will fit perfectly with the BMS.
+
+This API helps you to declare multiple block types with theirs endpoint, parameters and associated templates.
 
 You simply need to generate the object and let your favorite JSON framework serialize it.
 
-## How to install
+== How to install
 
 ```xml
 
-<dependecy>
+<dependency>
     <groupId>io.github.ouest-france</groupId>
     <artifactId>bp-contract-generator</artifactId>
     <version>1.0.0</version>
-</dependecy>
+</dependency>
 ```
 
-## Demonstration
+NOTE: the lib require Java 8 and does not provide any serialization tool
 
-Here is an example with a block type that takes an input text, sends it to a remote service (for demonstration only),
-and outputs the bolded text with different templates.
+== Getting started
+
+Here is an example with a block type that takes an input text, sends it to a remote service (for demonstration only), and outputs the bolded text with different templates.
+
+The following example assumes Spring is available on project, and Jackson has been properly configured.
 
 ```java
-
 @RequestMapping("/block-provider")
 @RestController
-@RequiredArgsConstructor
 public class BlockProviderResource {
 
     @GetMapping("/configurations")
@@ -69,3 +74,4 @@ public class BlockProviderResource {
 }
 ```
 
+You might find many other exampls in the test directory link:src/test/java/sipa/blockprovider/examples/
