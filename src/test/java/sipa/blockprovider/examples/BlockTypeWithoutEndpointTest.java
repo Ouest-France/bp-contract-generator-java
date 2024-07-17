@@ -48,6 +48,9 @@ public class BlockTypeWithoutEndpointTest extends AbstractTest {
                         // the block type
                         .addType("bold").withVersion(1, 0, 0)
 
+                        // set documentation
+                        .withDocumentation("http://ww.google.fr")
+
                         // the input text
                         .addParameter("text")
                         .configurableAsString(null)
