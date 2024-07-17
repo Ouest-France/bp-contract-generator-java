@@ -18,6 +18,9 @@ public class BlockTypeWithEndpointTest extends AbstractTest {
                         // the block type
                         .addType("bold").withVersion(1, 0, 0)
 
+                        // set documentation
+                        .withDocumentation("http://ww.google.fr")
+
                         // declare the endpoint url
                         .withEndpoint("https://localhost/block-configurations", "GET", "pure")
 

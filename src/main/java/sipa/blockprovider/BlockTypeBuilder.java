@@ -71,6 +71,17 @@ public class BlockTypeBuilder {
     }
 
     /**
+     * Set the version of the block type.
+     *
+     * @param url external documentation url
+     * @return the block type builder
+     */
+    public BlockTypeBuilder withDocumentation(final String url) {
+        this.blockConfiguration.setDocumentation(url);
+        return this;
+    }
+
+    /**
      * Specify the endpoint settings associated with the block type.
      *
      * @param url         the url of the endpoint. This endpoint *MUST* be accessible by the BMS

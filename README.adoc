@@ -18,7 +18,7 @@ You simply need to generate the object and let your favorite JSON framework seri
 <dependency>
     <groupId>io.github.ouest-france</groupId>
     <artifactId>bp-contract-generator</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -41,6 +41,9 @@ public class BlockProviderResource {
                 BlockProviderGenerator.create()
                         // the block type
                         .addType("bold").withVersion(1, 0, 0)
+
+                        // set documentation
+                        .withDocumentation("http://ww.google.fr")
 
                         // declare the endpoint url
                         .withEndpoint("https://localhost/block-configurations", "GET", "pure")
