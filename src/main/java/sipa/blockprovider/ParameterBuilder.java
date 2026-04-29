@@ -138,8 +138,22 @@ public class ParameterBuilder {
      * @return the parameter builder
      */
     public ParameterBuilder configurableAsEnum(final List<String> values) {
+        return configurableAsEnum( values, null);
+    }
+
+    /**
+     * Specify this parameter is configured as an enum in the backoffice with a default value
+     *
+     * @param values the list of enum values
+     * @param values the default value
+     * @return the parameter builder
+     */
+    public ParameterBuilder configurableAsEnum(final List<String> values, final String defaultValue) {
         this.uiType = "string";
         this.additionalUIProperties.put("enum", values);
+        if (defaultValue != null) {
+            this.additionalUIProperties.put("default", defaultValue);
+        }
         return this;
     }
 
