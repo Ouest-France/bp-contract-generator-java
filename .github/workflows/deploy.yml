@@ -1,25 +1,37 @@
-name: Publish package to the Maven Central Repository
+name: Release and Publish package to the Maven Central Repository
 on:
   release:
-    types: [created]
+    types: [ created ]
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: main
       - name: Set up Maven Central Repository
         uses: actions/setup-java@v5
         with:
           java-version: '21'
           distribution: 'temurin'
+          cache: maven
+          gpg-private-key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
           server-id: central
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
-      - id: install-secret-key
-        name: Install gpg secret key
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpg --batch --import
-          gpg --list-secret-keys --keyid-format LONG
+          git config --global user.name 'github-actions'
+          git config --global user.email 'actions[bot]@github.com'
+          mvn -ntp -B release:prepare release:perform -DreleaseVersion=${{ github.event.inputs.releaseVersion }} -DdevelopmentVersion=${{ github.event.inputs.developmentVersion }} -Dtag=temp_$${{ github.event.inputs.releaseVersion }}
+          - name: Post-Release
+            run: git push --delete origin temp_$${{ github.event.inputs.releaseVersion }}
+
       - name: Publish package
         run: mvn --batch-mode --no-transfer-progress "-Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSPHRASE }}" clean deploy
         env:

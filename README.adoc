@@ -1,4 +1,4 @@
-= bp-contract-generator-java
+= bms-bp-contract-generator
 :tip-caption: :bulb:
 
 We are aware that writing a block provider contract is clearly a pain in the ass.
@@ -16,9 +16,9 @@ You simply need to generate the object and let your favorite JSON framework seri
 ```xml
 
 <dependency>
-    <groupId>io.github.ouest-france</groupId>
-    <artifactId>bp-contract-generator</artifactId>
-    <version>1.0.2</version>
+    <groupId>fr.ouestfrance</groupId>
+    <artifactId>bms-bp-contract-generator</artifactId>
+    <version>1.0.3</version>
 </dependency>
 ```
 
@@ -77,4 +77,4 @@ public class BlockProviderResource {
 }
 ```
 
-You might find many other exampls in the test directory link:src/test/java/sipa/blockprovider/examples/
+You might find many other examples in the test directory link:src/test/java/sipa/blockprovider/examples/
