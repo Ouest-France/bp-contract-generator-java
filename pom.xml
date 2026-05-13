@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.ouestfrance</groupId>
-    <artifactId>bms-bp-contract-generator</artifactId>
+    <artifactId>bp-contract-generator</artifactId>
     <version>1.0.4-SNAPSHOT</version>
 
     <properties>
