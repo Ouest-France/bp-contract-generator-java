@@ -29,8 +29,8 @@ jobs:
           git config --global user.name 'github-actions'
           git config --global user.email 'actions[bot]@github.com'
           mvn -ntp -B release:prepare release:perform -DreleaseVersion=${{ github.event.inputs.releaseVersion }} -DdevelopmentVersion=${{ github.event.inputs.developmentVersion }} -Dtag=temp_$${{ github.event.inputs.releaseVersion }}
-          - name: Post-Release
-            run: git push --delete origin temp_$${{ github.event.inputs.releaseVersion }}
+      - name: Post-Release
+        run: git push --delete origin temp_$${{ github.event.inputs.releaseVersion }}
 
       - name: Publish package
         run: mvn --batch-mode --no-transfer-progress "-Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSPHRASE }}" clean deploy
