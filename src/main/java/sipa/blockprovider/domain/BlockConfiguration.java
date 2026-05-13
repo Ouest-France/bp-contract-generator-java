@@ -35,7 +35,11 @@ public class BlockConfiguration {
 
     public void setDocumentation(final String url) { this.documentation.url = url; }
 
-    public class Documentation {
+    public static class Documentation {
         private String url;
+
+        public String getUrl() {
+            return this.url;
+        }
     }
 }
