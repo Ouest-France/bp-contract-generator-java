@@ -4,7 +4,7 @@
 
     <groupId>fr.ouestfrance</groupId>
     <artifactId>bp-contract-generator</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -107,7 +107,7 @@
         <connection>scm:git:${project.scm.url}</connection>
         <developerConnection>scm:git:${project.scm.url}</developerConnection>
         <url>https://github.com/ouest-france/bp-contract-generator-java.git</url>
-        <tag>temp_$</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
